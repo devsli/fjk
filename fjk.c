@@ -87,7 +87,7 @@ void run(char *from, char *to, int dec)
 	
 	indat = malloc(size+1);
 	if (size != fread(indat, 1, size, file)) {
-		printf("Забавно, но почему-то прочиталось не всё\n");
+		printf("Didn't read lol\n");
 	}
 	fclose(file);
 
