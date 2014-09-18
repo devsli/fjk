@@ -5,9 +5,8 @@ Simple cipher
 
 ```bash
 $ make
-$ echo "Hello world" > msg.txt
 
-$ ./fjk -i msg.txt -o encrypted.txt
+$ echo "Hello world" | ./fjk -o encrypted.txt
 $ cat encrypted.txt 
 roHl edwl
 ol
