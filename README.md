@@ -15,7 +15,6 @@ roHl edwl
 ol
 
 $ ./fjk -d -i encrypted.txt -o msg-test.txt
-
 $ cat msg-test.txt 
 Hello world
 ```
