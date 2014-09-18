@@ -75,7 +75,7 @@ void run(char *from, char *to, int dec)
 	FILE *file;
 	char *indat;
 	char *outdat;
-	int size;
+	long int size;
 
 	if ((file = fopen(from, "rb")) == NULL) {
 		printf("Unable to open file %s\n", from);
@@ -83,11 +83,11 @@ void run(char *from, char *to, int dec)
 	}
 
 	fseek(file, 0, SEEK_END);
-	size = ftell(file);
+	assert((size = ftell(file)) >= 0);
 	fseek(file, 0, SEEK_SET);
-	
+
 	indat = malloc(size+1);
-	assert(size == fread(indat, 1, size, file));
+	assert((size_t) size == fread(indat, 1, size, file));
 	fclose(file);
 
 	if (dec) {
