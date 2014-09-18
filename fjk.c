@@ -8,13 +8,14 @@
 #include "decrypt.h"
 
 void print_usage(char *selfname);
-void run(char *from, char *to, int decrypt);
+void run(FILE *from, FILE *to, int decrypt);
 
 int main(int argc, char **argv)
 {
 	int dec = 0;
 	int opt;
 	char *infile = "", *outfile = "";
+	FILE *input, *output;
 
 	while((opt = getopt(argc, argv, "di:o:")) != -1) {
 		switch (opt) {
@@ -32,34 +33,27 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 	}
-	if (strlen(infile) && strlen(outfile)) {
-		run(infile, outfile, dec);
-	} else {
-		print_usage(argv[0]);
-		exit(1);
-	}
+
+	set_io(infile,   stdin,  input, "rb", 2)
+	set_io(outfile, stdout, output, "wb", 3)
+
+	run(input, output, dec);
 	return 0;
 }
 
-void run(char *from, char *to, int dec)
+void run(FILE *from, FILE *to, int dec)
 {
-	FILE *file;
 	char *indat;
 	char *outdat;
 	long int size;
 
-	if ((file = fopen(from, "rb")) == NULL) {
-		perror("Unable to open input file");
-		exit(2);
-	}
-
-	fseek(file, 0, SEEK_END);
-	assert((size = ftell(file)) != -1);
-	fseek(file, 0, SEEK_SET);
+	fseek(from, 0, SEEK_END);
+	assert((size = ftell(from)) != -1);
+	fseek(from, 0, SEEK_SET);
 
 	indat = malloc(size+1);
-	assert((size_t) size == fread(indat, 1, size, file));
-	fclose(file);
+	assert((size_t) size == fread(indat, 1, size, from));
+	fclose(from);
 
 	if (dec) {
 		outdat = fjk_decrypt(indat, size);
@@ -67,13 +61,8 @@ void run(char *from, char *to, int dec)
 		outdat = fjk_encrypt(indat, size);
 	}
 
-	if ((file = fopen(to, "wb")) == NULL) {
-		perror("Unable to open output file");
-		exit(3);
-	}
-
-	fwrite(outdat, 1, size, file);
-	fclose(file);
+	fwrite(outdat, 1, size, to);
+	fclose(to);
 
 	free(indat);
 	free(outdat);
