@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "include/fjk.h"
-#include "include/decrypt.h"
 
 /*
  *  input: 87531642

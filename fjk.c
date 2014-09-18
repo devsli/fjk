@@ -4,8 +4,6 @@
 #include <string.h>
 #include <unistd.h>
 #include "include/fjk.h"
-#include "include/encrypt.h"
-#include "include/decrypt.h"
 
 void print_usage(char *selfname);
 void run(FILE *from, FILE *to, int decrypt);
