@@ -1,12 +1,13 @@
-SRC=decrypt.c decrypt.h encrypt.c encrypt.h fjk.h fjk.c
-BINDIR=bin
+SOURCES=decrypt.c encrypt.c fjk.c
+HEADERS=$(SOURCES:.c=.h)
+OBJECTS=$(SOURCES:.c=.o)
+CC=gcc
+CFLAGS=-Wall -Wextra -O2
+EXECUTABLE=fjk
 
-fjk: $(SRC)
-	gcc -Wall -Wextra -O2 decrypt.c encrypt.c fjk.c -o $@
+all: $(EXECUTABLE)
 
-fjkdec: decrypt.c fjk.h
-	gcc -O2 decrypt.c -o fjkdec
+$(EXECUTABLE): $(OBJECTS)
 
-
-fjkenc: encrypt.c fjk.h
-	gcc -O2 encrypt.c -o fjkenc
+clean:
+	rm *.o
