@@ -36,7 +36,6 @@ char* encrypt(const char *decoded, int size)
 	char *result;
 	int tail_size;
 	int tail_idx;
-	int chunk_size;
 	int chunk_offset;
 	int chunk_count;
 	int chunk_idx;
@@ -47,7 +46,6 @@ char* encrypt(const char *decoded, int size)
 	tail_idx = tail_size - 1;
 	pos = 0;
 
-	chunk_size = CHUNKS - 1;
 	chunk_count = size / CHUNKS;
 	chunk_idx = 0;
 	chunk_offset = CHUNKS - 1;
