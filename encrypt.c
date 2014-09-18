@@ -4,6 +4,19 @@
 #include "fjk.h"
 #include "encrypt.h"
 
+/*
+ *  input: 12345678
+ *
+ * column: |1|2|3|4|5|6|7|8|
+ *         +-+-+-+-+-+-+-+-+
+ *   tail: |8|7| | | | | | |
+ * body 1: |8|7| | |1| | |2|
+ * body 2: |8|7| |3|1| |4|2|
+ * body 3: |8|7|5|3|1|6|4|2|
+ *
+ * output: 87531642
+ */
+
 char* encrypt(const char *decoded, int size)
 {
 	char *result;
