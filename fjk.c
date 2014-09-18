@@ -28,6 +28,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "fjk.h"
 #include "encrypt.h"
@@ -38,11 +39,10 @@ void run(char *from, char *to, int decrypt);
 
 int main(int argc, char **argv)
 {
-	int inset = 0, outset = 0, dec = 0;
+	int dec = 0;
 	int opt;
-	char *infile;
-	char *outfile;
-	
+	char *infile = "", *outfile = "";
+
 	while((opt = getopt(argc, argv, "di:o:")) != -1) {
 		switch (opt) {
 		case 'd':
@@ -50,18 +50,16 @@ int main(int argc, char **argv)
 			break;
 		case 'i':
 			infile = optarg;
-			inset = 1;
 			break;
 		case 'o':
 			outfile = optarg;
-			outset = 1;
 			break;
 		default:
 			print_usage(argv[0]);
 			exit(1);
 		}
 	}
-	if (inset && outset) {
+	if (strlen(infile) && strlen(outfile)) {
 		run(infile, outfile, dec);
 	} else {
 		print_usage(argv[0]);
