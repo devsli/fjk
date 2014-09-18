@@ -5,8 +5,6 @@ Simple cipher
 
 ```bash
 $ make
-gcc -O2 decrypt.c encrypt.c fjk.c -o fjk
-
 $ echo "Hello world" > msg.txt
 
 $ ./fjk -i msg.txt -o encrypted.txt
