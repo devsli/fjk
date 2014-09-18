@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "fjk.h"
-#include "encrypt.h"
+#include "include/fjk.h"
+#include "include/encrypt.h"
 
 /*
  *  input: 12345678
