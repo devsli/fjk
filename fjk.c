@@ -25,6 +25,7 @@
 //      OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -86,9 +87,7 @@ void run(char *from, char *to, int dec)
 	fseek(file, 0, SEEK_SET);
 	
 	indat = malloc(size+1);
-	if (size != fread(indat, 1, size, file)) {
-		printf("Didn't read lol\n");
-	}
+	assert(size == fread(indat, 1, size, file));
 	fclose(file);
 
 	if (dec) {
