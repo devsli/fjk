@@ -32,8 +32,8 @@ int main(int argc, char **argv)
 		}
 	}
 
-	set_io(infile,   stdin,  input, "rb", 2)
-	set_io(outfile, stdout, output, "wb", 3)
+	set_io(input,  infile,  stdin,  "rb", 2)
+	set_io(output, outfile, stdout, "wb", 3)
 
 	run(input, output, dec);
 	return 0;
