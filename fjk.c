@@ -49,7 +49,7 @@ void run(char *from, char *to, int dec)
 	long int size;
 
 	if ((file = fopen(from, "rb")) == NULL) {
-		printf("Unable to open file %s\n", from);
+		perror("Unable to open input file");
 		exit(2);
 	}
 
@@ -68,7 +68,7 @@ void run(char *from, char *to, int dec)
 	}
 
 	if ((file = fopen(to, "wb")) == NULL) {
-		printf("Unable to open file %s\n", to);
+		perror("Unable to open output file");
 		exit(3);
 	}
 
