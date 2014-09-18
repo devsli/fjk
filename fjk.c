@@ -81,7 +81,7 @@ void run(char *from, char *to, int dec)
 	}
 
 	fseek(file, 0, SEEK_END);
-	assert((size = ftell(file)) >= 0);
+	assert((size = ftell(file)) != -1);
 	fseek(file, 0, SEEK_SET);
 
 	indat = malloc(size+1);
