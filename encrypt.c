@@ -17,7 +17,7 @@
  * output: 87531642
  */
 
-char* encrypt(const char *decoded, int size)
+char* fjk_encrypt(const char *decoded, int size)
 {
 	char *result;
 	int tail_size;
@@ -26,7 +26,7 @@ char* encrypt(const char *decoded, int size)
 	int chunk_count;
 	int chunk_idx;
 	int pos;
-	
+
 	result = malloc(size);
 	tail_size = size % CHUNKS;
 	tail_idx = tail_size - 1;

@@ -17,7 +17,7 @@
  * output: 12345678
  */
 
-char* decrypt(const char *encoded, int size)
+char* fjk_decrypt(const char *encoded, int size)
 {
 	char *result;
 	int tail_size;
@@ -26,7 +26,7 @@ char* decrypt(const char *encoded, int size)
 	int chunk_offset;
 	int chunk_idx;
 	int pos;
-	
+
 	chunk_idx = CHUNKS-1;
 	chunk_offset = 0;
 	result = malloc(size);
@@ -43,7 +43,7 @@ char* decrypt(const char *encoded, int size)
 	}
 
 	// Write data
-	
+
 	while (pos < size) {
 		*(result+(chunk_idx*chunk_size)+chunk_offset) = *(encoded+pos);
 		++pos;

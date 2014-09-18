@@ -62,9 +62,9 @@ void run(char *from, char *to, int dec)
 	fclose(file);
 
 	if (dec) {
-		outdat = decrypt(indat, size);
+		outdat = fjk_decrypt(indat, size);
 	} else {
-		outdat = encrypt(indat, size);
+		outdat = fjk_encrypt(indat, size);
 	}
 
 	if ((file = fopen(to, "wb")) == NULL) {

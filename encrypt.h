@@ -1,1 +1,1 @@
-char* encrypt(const char *encoded, int size);
+char* fjk_encrypt(const char *encoded, int size);
