@@ -23,7 +23,7 @@ char* fjk_decrypt(const char *encoded, int size)
 	struct tail t;
 	struct chunk c;
 
-	c.idx = CHUNK_SZ-1;
+	c.idx = CHUNK_SZ - 1;
 	c.offset = 0;
 	result = malloc(size * sizeof(char));
 	t.size = size % CHUNK_SZ;
@@ -34,18 +34,18 @@ char* fjk_decrypt(const char *encoded, int size)
 	// Write tail
 
 	while (t.idx >= 0) {
-		*(result+size-t.idx-1) = *(encoded+t.idx);
+		*(result + size - t.idx-1) = *(encoded + t.idx);
 		--t.idx;
 	}
 
 	// Write data
 
 	while (pos < size) {
-		*(result+(c.idx*c.count)+c.offset) = *(encoded+pos);
+		*(result + (c.idx * c.count) + c.offset) = *(encoded + pos);
 		++pos;
 
 		if (--c.idx < 0) {
-			c.idx = CHUNK_SZ-1;
+			c.idx = CHUNK_SZ - 1;
 			++c.offset;
 		}
 	}

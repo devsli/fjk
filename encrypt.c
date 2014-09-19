@@ -35,13 +35,13 @@ char* fjk_encrypt(const char *decoded, int size)
 	// Write tail
 
 	while (t.idx >= 0) {
-		*(result + t.idx) = *(decoded + size - t.idx-1);
+		*(result + t.idx) = *(decoded + size - t.idx - 1);
 		--t.idx;
 	}
 
 	// Write data
 
-	while (pos+t.size < size) {
+	while (pos + t.size < size) {
 		*(result + t.size + (c.idx * CHUNK_SZ) + c.offset) = *(decoded + pos);
 		++pos;
 		if (++c.idx >= c.count) {
