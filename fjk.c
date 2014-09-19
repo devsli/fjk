@@ -43,14 +43,18 @@ void run(FILE *from, FILE *to, int dec)
 {
 	char *indat;
 	char *outdat;
-	long int size;
+	size_t buffsize = 2;
+	size_t size = 0;
 
-	fseek(from, 0, SEEK_END);
-	assert((size = ftell(from)) != -1);
-	fseek(from, 0, SEEK_SET);
+	indat = malloc(buffsize * sizeof(char));
+	size += fread(indat, sizeof(char), buffsize, from);
 
-	indat = malloc(size+1);
-	assert((size_t) size == fread(indat, 1, size, from));
+	while (size == buffsize) {
+		buffsize = buffsize << 1;
+		indat = realloc(indat, buffsize * sizeof(char));
+		size += fread((indat + size), sizeof(char), buffsize >> 1, from);
+	}
+
 	fclose(from);
 
 	if (dec) {
@@ -59,7 +63,7 @@ void run(FILE *from, FILE *to, int dec)
 		outdat = fjk_encrypt(indat, size);
 	}
 
-	fwrite(outdat, 1, size, to);
+	fwrite(outdat, sizeof(char), size, to);
 	fclose(to);
 
 	free(indat);
