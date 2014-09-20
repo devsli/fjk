@@ -9,6 +9,12 @@ all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
 
+libfjk.so: $(OBJECTS)
+	$(CC) $(CFLAGS) -shared -o $@ decrypt.o encrypt.o
+
+fjks: fjk.c libfjk.so
+	$(CC) $(CFLAGS) -o $@ fjk.c -lfjk -L`pwd`
+
 py-module: $(SOURCES) $(HEADERS)
 	python setup.py build
 
