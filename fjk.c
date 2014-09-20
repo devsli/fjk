@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	extern int errno;
 	FILE *input = stdin, *output = stdout;
 
-	while((opt = getopt(argc, argv, "di:o:")) != -1) {
+	while((opt = getopt(argc, argv, "hdi:o:")) != -1) {
 		switch (opt) {
 		case 'd':
 			dec = 1;
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 		case 'o':
 			set_io(output, optarg, "wb");
 			break;
+		case 'h':
 		default:
 			print_usage(argv[0]);
 			exit(1);
