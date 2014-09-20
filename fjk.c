@@ -44,12 +44,12 @@ void run(FILE *from, FILE *to, fjk_algo method)
 	size_t buffsize = BUFF_SZ;
 	size_t size = 0;
 
-	indat = malloc(buffsize);
+	assert((indat = malloc(buffsize)) != NULL);
 	size += fread(indat, sizeof(char), buffsize, from);
 
 	while (size == buffsize) {
 		buffsize = buffsize << 1;
-		indat = realloc(indat, buffsize);
+		assert((indat = realloc(indat, buffsize)) != NULL);
 		size += fread((indat + size), sizeof(char), buffsize >> 1, from);
 	}
 	fclose(from);
