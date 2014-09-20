@@ -12,7 +12,6 @@ int main(int argc, char **argv)
 {
 	int dec = 0;
 	int opt;
-	char *infile = "", *outfile = "";
 	extern int errno;
 	FILE *input = stdin, *output = stdout;
 
@@ -22,19 +21,16 @@ int main(int argc, char **argv)
 			dec = 1;
 			break;
 		case 'i':
-			infile = optarg;
+			set_io(input,  optarg, "rb");
 			break;
 		case 'o':
-			outfile = optarg;
+			set_io(output, optarg, "wb");
 			break;
 		default:
 			print_usage(argv[0]);
 			exit(1);
 		}
 	}
-
-	set_io(input,  infile,  "rb");
-	set_io(output, outfile, "wb");
 
 	run(input, output, dec);
 	return 0;
