@@ -71,6 +71,6 @@ void print_usage(char *selfname)
 {
 	printf("Usage: %s [-d] [-i infile] [-o outfile]\n", selfname);
 	printf("	-d: decrypt\n");
-	printf("	-i FILE: input file, or STDIN");
-	printf("	-o FILE: output file, or STDOUT");
+	printf("	-i FILE: input file, or STDIN\n");
+	printf("	-o FILE: output file, or STDOUT\n");
 }
