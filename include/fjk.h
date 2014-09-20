@@ -1,11 +1,9 @@
 #define CHUNK_SZ 3
 #define BUFF_SZ 64
 
-#define set_io(var, fname, stdpipe, fmode) if (strlen(fname)) {\
+#define set_io(var, fname, fmode) if (strlen(fname)) {\
   if ((var = fopen(fname, fmode)) == NULL) {\
-    perror("Unable to open " #var " file"); exit(errno);\
-  }\
-} else { var = stdpipe; }
+    perror("Unable to open " #var " file"); exit(errno);}}
 
 struct tail {
 	int size;

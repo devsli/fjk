@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	int opt;
 	char *infile = "", *outfile = "";
 	extern int errno;
-	FILE *input, *output;
+	FILE *input = stdin, *output = stdout;
 
 	while((opt = getopt(argc, argv, "di:o:")) != -1) {
 		switch (opt) {
@@ -33,8 +33,8 @@ int main(int argc, char **argv)
 		}
 	}
 
-	set_io(input,  infile,  stdin,  "rb");
-	set_io(output, outfile, stdout, "wb");
+	set_io(input,  infile,  "rb");
+	set_io(output, outfile, "wb");
 
 	run(input, output, dec);
 	return 0;
