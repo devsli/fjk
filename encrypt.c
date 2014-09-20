@@ -16,7 +16,7 @@
  * output: 87531642
  */
 
-char* fjk_encrypt(const char *decoded, int size)
+char* fjk_encrypt(const char *decoded, size_t size)
 {
 	char *result;
 	int pos;

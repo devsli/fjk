@@ -16,10 +16,10 @@
  * output: 12345678
  */
 
-char* fjk_decrypt(const char *encoded, int size)
+char* fjk_decrypt(const char *encoded, size_t size)
 {
 	char *result;
-	int pos;
+	unsigned long pos;
 	struct tail t;
 	struct chunk c;
 

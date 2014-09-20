@@ -6,17 +6,17 @@
     perror("Unable to open " #var " file"); exit(errno);}}
 
 struct tail {
-	int size;
+	unsigned int size;
 	int idx;
 };
 
 struct chunk {
-	int idx;
+  long idx;
 	int offset;
-	int count;
+	unsigned long count;
 };
 
-typedef char* (*fjk_algo)(const char *data, int size);
+typedef char* (*fjk_algo)(const char *data, size_t size);
 
-char* fjk_encrypt(const char *decoded, int size);
-char* fjk_decrypt(const char *encoded, int size);
+char* fjk_encrypt(const char *decoded, size_t size);
+char* fjk_decrypt(const char *encoded, size_t size);
