@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	int dec = 0;
 	int opt;
 	char *infile = "", *outfile = "";
+	extern int errno;
 	FILE *input, *output;
 
 	while((opt = getopt(argc, argv, "di:o:")) != -1) {
@@ -32,8 +33,8 @@ int main(int argc, char **argv)
 		}
 	}
 
-	set_io(input,  infile,  stdin,  "rb", 2)
-	set_io(output, outfile, stdout, "wb", 3)
+	set_io(input,  infile,  stdin,  "rb");
+	set_io(output, outfile, stdout, "wb");
 
 	run(input, output, dec);
 	return 0;
@@ -43,7 +44,7 @@ void run(FILE *from, FILE *to, int dec)
 {
 	char *indat;
 	char *outdat;
-	size_t buffsize = 2;
+	size_t buffsize = BUFF_SZ;
 	size_t size = 0;
 
 	indat = malloc(buffsize * sizeof(char));
