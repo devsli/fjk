@@ -44,12 +44,12 @@ void run(FILE *from, FILE *to, int dec)
 	size_t buffsize = BUFF_SZ;
 	size_t size = 0;
 
-	indat = malloc(buffsize * sizeof(char));
+	indat = malloc(buffsize);
 	size += fread(indat, sizeof(char), buffsize, from);
 
 	while (size == buffsize) {
 		buffsize = buffsize << 1;
-		indat = realloc(indat, buffsize * sizeof(char));
+		indat = realloc(indat, buffsize);
 		size += fread((indat + size), sizeof(char), buffsize >> 1, from);
 	}
 

@@ -23,7 +23,7 @@ char* fjk_encrypt(const char *decoded, int size)
 	struct tail t;
 	struct chunk c;
 
-	result = malloc(size * sizeof(char));
+	result = malloc(size);
 	t.size = size % CHUNK_SZ;
 	t.idx = t.size - 1;
 	pos = 0;

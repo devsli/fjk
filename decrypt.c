@@ -25,7 +25,7 @@ char* fjk_decrypt(const char *encoded, int size)
 
 	c.idx = CHUNK_SZ - 1;
 	c.offset = 0;
-	result = malloc(size * sizeof(char));
+	result = malloc(size);
 	t.size = size % CHUNK_SZ;
 	t.idx = t.size - 1;
 	pos = t.size;
