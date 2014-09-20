@@ -44,7 +44,7 @@ char* fjk_decrypt(const char *encoded, size_t size)
 		*(result + (c.idx * c.count) + c.offset) = *(encoded + pos);
 		++pos;
 
-		if (--c.idx < 0) {
+		if (!c.idx--) {
 			c.idx = CHUNK_SZ - 1;
 			++c.offset;
 		}

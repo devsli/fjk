@@ -11,7 +11,7 @@ struct tail {
 };
 
 struct chunk {
-  long idx;
+  unsigned long idx;
 	int offset;
 	unsigned long count;
 };
