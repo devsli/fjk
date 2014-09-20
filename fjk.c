@@ -6,19 +6,19 @@
 #include "include/fjk.h"
 
 void print_usage(char *selfname);
-void run(FILE *from, FILE *to, int decrypt);
+void run(FILE *from, FILE *to, fjk_algo method);
 
 int main(int argc, char **argv)
 {
-	int dec = 0;
 	int opt;
 	extern int errno;
+	fjk_algo method = &fjk_encrypt;
 	FILE *input = stdin, *output = stdout;
 
 	while((opt = getopt(argc, argv, "hdi:o:")) != -1) {
 		switch (opt) {
 		case 'd':
-			dec = 1;
+			method = &fjk_decrypt;
 			break;
 		case 'i':
 			set_io(input,  optarg, "rb");
@@ -33,11 +33,11 @@ int main(int argc, char **argv)
 		}
 	}
 
-	run(input, output, dec);
+	run(input, output, method);
 	return 0;
 }
 
-void run(FILE *from, FILE *to, int dec)
+void run(FILE *from, FILE *to, fjk_algo method)
 {
 	char *indat;
 	char *outdat;
@@ -52,16 +52,9 @@ void run(FILE *from, FILE *to, int dec)
 		indat = realloc(indat, buffsize);
 		size += fread((indat + size), sizeof(char), buffsize >> 1, from);
 	}
-
 	fclose(from);
 
-	if (dec) {
-		outdat = fjk_decrypt(indat, size);
-	} else {
-		outdat = fjk_encrypt(indat, size);
-	}
-
-	fwrite(outdat, sizeof(char), size, to);
+	fwrite((outdat = method(indat, size)), sizeof(char), size, to);
 	fclose(to);
 
 	free(indat);
