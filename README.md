@@ -6,12 +6,10 @@ Simple cipher
 ```bash
 $ make
 
-$ echo "Hello world" | ./fjk -o encrypted.txt
-$ cat encrypted.txt 
+$ echo "Hello world" | ./fjk
 roHl edwl
 ol
 
-$ ./fjk -d -i encrypted.txt -o msg-test.txt
-$ cat msg-test.txt 
+$ echo "Hello world" | ./fjk | ./fjk -d
 Hello world
 ```
