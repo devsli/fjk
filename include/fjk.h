@@ -1,9 +1,12 @@
 #define CHUNK_SZ 3
 #define BUFF_SZ 64
 
-#define set_io(var, fname, fmode) if (strlen(fname)) {\
-  if ((var = fopen(fname, fmode)) == NULL) {\
-    perror("Unable to open " #var " file"); exit(errno);}}
+#define SET_IO(var, fname, fmode) if (strlen(fname)) {  \
+    if ((var = fopen(fname, fmode)) == NULL) {          \
+        perror("Unable to open " #var " file");         \
+        exit(errno);                                    \
+    }                                                   \
+}
 
 struct tail {
 	unsigned int size;
@@ -11,7 +14,7 @@ struct tail {
 };
 
 struct chunk {
-  unsigned long idx;
+	unsigned long idx;
 	int offset;
 	unsigned long count;
 };

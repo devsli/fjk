@@ -21,10 +21,10 @@ int main(int argc, char **argv)
 			method = &fjk_decrypt;
 			break;
 		case 'i':
-			set_io(input,  optarg, "rb");
+			SET_IO(input,  optarg, "rb");
 			break;
 		case 'o':
-			set_io(output, optarg, "wb");
+			SET_IO(output, optarg, "wb");
 			break;
 		case 'h':
 		default:
