@@ -5,9 +5,11 @@ CC=gcc
 CFLAGS=-Wall -Wextra -O2
 EXECUTABLE=fjk
 
-all: $(EXECUTABLE) py-module fjks
+all: $(EXECUTABLE) py-module
 
 $(EXECUTABLE): $(OBJECTS)
+
+shared: fjks
 
 libfjk.so: $(OBJECTS)
 	$(CC) $(CFLAGS) -shared -o $@ decrypt.o encrypt.o
