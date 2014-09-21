@@ -5,7 +5,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra -O2
 EXECUTABLE=fjk
 
-all: $(EXECUTABLE)
+all: $(EXECUTABLE) py-module fjks
 
 $(EXECUTABLE): $(OBJECTS)
 
