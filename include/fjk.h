@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #define CHUNK_SZ 3
 #define BUFF_SZ 64
 

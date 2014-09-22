@@ -1,8 +1,6 @@
 #include <assert.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <errno.h>
 #include "include/fjk.h"
 
 void print_usage(char *selfname);
