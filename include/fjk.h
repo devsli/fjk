@@ -12,8 +12,6 @@
     }                                                   \
 }
 
-#define UNUSED(x) (void)(x)
-
 struct tail {
 	unsigned int size;
 	int idx;
@@ -26,7 +24,6 @@ struct chunk {
 };
 
 typedef char* (*fjk_algo)(const char *data, size_t size);
-typedef void  (*walker)(FILE *src, FILE *dst, fjk_algo method);
 
 char* fjk_encrypt(const char *decoded, size_t size);
 char* fjk_decrypt(const char *encoded, size_t size);

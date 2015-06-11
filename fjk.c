@@ -4,24 +4,19 @@
 #include "include/fjk.h"
 
 void print_usage(char *selfname);
-void memrun(FILE *from, FILE *to, fjk_algo method);
-void swapper(FILE *from, FILE *to, fjk_algo _);
+void run(FILE *from, FILE *to, fjk_algo method);
 
 int main(int argc, char **argv)
 {
 	int opt;
 	extern int errno;
 	fjk_algo method = &fjk_encrypt;
-	walker run = &memrun;
 	FILE *input = stdin, *output = stdout;
 
-	while((opt = getopt(argc, argv, "hdsi:o:")) != -1) {
+	while((opt = getopt(argc, argv, "hdi:o:")) != -1) {
 		switch (opt) {
 		case 'd':
 			method = &fjk_decrypt;
-			break;
-		case 's':
-			run = &swapper;
 			break;
 		case 'i':
 			SET_IO(input,  optarg, "rb");
@@ -40,7 +35,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-void memrun(FILE *from, FILE *to, fjk_algo method)
+void run(FILE *from, FILE *to, fjk_algo method)
 {
 	char *indat;
 	char *outdat;
@@ -64,30 +59,10 @@ void memrun(FILE *from, FILE *to, fjk_algo method)
 	free(outdat);
 }
 
-void swapper(FILE *from, FILE *to, fjk_algo alg)
-{
-	UNUSED(alg);
-
-	char buffer[2];
-	char tmp;
-	while(!feof(from)) {
-		if (fread(buffer, sizeof(char), 2, from) == 1) {
-			fwrite(buffer, sizeof(char), 1, to);
-		} else {
-			tmp = buffer[0];
-			buffer[0] = buffer[1];
-			buffer[1] = tmp;
-
-			fwrite(buffer, sizeof(char), 2, to);
-		}
-	}
-}
-
 void print_usage(char *selfname)
 {
-	printf("Usage: %s [-d] [-s] [-i infile] [-o outfile]\n", selfname);
+	printf("Usage: %s [-d] [-i infile] [-o outfile]\n", selfname);
 	printf("	-d: decrypt\n");
-	printf("	-s: swap bytes\n");
 	printf("	-i FILE: input file, or STDIN\n");
 	printf("	-o FILE: output file, or STDOUT\n");
 }
