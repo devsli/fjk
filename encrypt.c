@@ -17,6 +17,7 @@ char* fjk_encrypt(const char *decoded, size_t size)
 {
 	char *result;
 	int pos;
+	unsigned int enc_offset, dec_offset;
 	struct tail t;
 	struct chunk c;
 
@@ -32,18 +33,27 @@ char* fjk_encrypt(const char *decoded, size_t size)
 	// Write tail
 
 	while (t.idx >= 0) {
-		*(result + t.idx) = *(decoded + size - t.idx - 1);
-		--t.idx;
+		enc_offset = t.idx;
+		dec_offset = size - t.idx - 1;
+
+		*(result + enc_offset) = *(decoded + dec_offset);
+
+		t.idx -= 1;
 	}
 
 	// Write data
 
 	while (pos + t.size < size) {
-		*(result + t.size + (c.idx * CHUNK_SZ) + c.offset) = *(decoded + pos);
-		++pos;
+		enc_offset = t.size + c.offset + c.idx * CHUNK_SZ;
+		dec_offset = pos;
+
+		*(result + enc_offset) = *(decoded + dec_offset);
+
+		pos += 1;
+
 		if (++c.idx >= c.count) {
 			c.idx = 0;
-			c.offset--;
+			c.offset -= 1;
 		}
 	}
 
