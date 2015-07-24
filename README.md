@@ -6,6 +6,7 @@ Simple cipher
 Command-line:
 
 ```bash
+$ sudo apt-get install python-dev # in case you want to build python extension
 $ make
 
 $ echo "Hello world" | ./fjk
