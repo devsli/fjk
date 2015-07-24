@@ -1,4 +1,5 @@
-SOURCES=decrypt.c encrypt.c fjk.c
+LIBSRC=decrypt.c encrypt.c
+SOURCES=$(LIBSRC) fjk.c
 HEADERS=include/*.h
 OBJECTS=$(SOURCES:.c=.o)
 CC=gcc
@@ -25,5 +26,5 @@ clean:
 
 test:
 	if [ -x ./tester ]; then rm tester; fi
-	$(CC) $(CFLAGS) -o tester tests/fjk_test.c encrypt.c
+	$(CC) $(CFLAGS) -o tester tests/fjk_test.c $(LIBSRC)
 	./tester
