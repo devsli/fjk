@@ -29,3 +29,14 @@ import fjk
 print fjk.encrypt('Hello, world!')
 print fjk.decrypt('!ooHr,el ldwl')
 ```
+
+Contribution
+============
+
+1. fork
+1. edit
+1. `make test` && pull request
+
+Cool stuff
+==========
+* [siu/minunit](https://github.com/siu/minunit)
