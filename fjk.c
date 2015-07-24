@@ -61,8 +61,9 @@ void run(FILE *from, FILE *to, fjk_algo method)
 
 void print_usage(char *selfname)
 {
-	printf("Usage: %s [-d] [-i infile] [-o outfile]\n", selfname);
-	printf("	-d: decrypt\n");
+	printf("Usage: %s [-d] [-i infile] [-o outfile] [-h]\n", selfname);
+	printf("	-d:      decrypt\n");
 	printf("	-i FILE: input file, or STDIN\n");
 	printf("	-o FILE: output file, or STDOUT\n");
+	printf("	-h:      display this help and exit\n");
 }
