@@ -2,7 +2,7 @@ SOURCES=decrypt.c encrypt.c fjk.c
 HEADERS=include/*.h
 OBJECTS=$(SOURCES:.c=.o)
 CC=gcc
-CFLAGS=-Wall -Wextra -O2
+CFLAGS=-Wall -Wextra -O2 -fPIC
 EXECUTABLE=fjk
 
 all: $(EXECUTABLE) py-module
