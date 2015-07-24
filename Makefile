@@ -22,3 +22,8 @@ py-module: $(SOURCES) $(HEADERS)
 
 clean:
 	rm *.o
+
+test:
+	if [ -x ./tester ]; then rm tester; fi
+	$(CC) $(CFLAGS) -o tester tests/fjk_test.c encrypt.c
+	./tester
