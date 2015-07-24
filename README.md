@@ -1,7 +1,5 @@
-fjk-encoder
-===========
-
-Simple cipher
+fjk cipher
+==========
 
 Command-line:
 
