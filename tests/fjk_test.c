@@ -13,6 +13,8 @@ MU_TEST(decrypt_7) { mu_assert(strncmp(fjk_decrypt("7531642", 7), "1234567", 7) 
 MU_TEST(decrypt_8) { mu_assert(strncmp(fjk_decrypt("87531642", 8), "12345678", 8) == 0, "decryption of '87531642' is not equal to '12345678'"); }
 MU_TEST(decrypt_9) { mu_assert(strncmp(fjk_decrypt("741852963", 9), "123456789", 9) == 0, "decryption of '741852963' is not equal to '123456789'"); }
 
+
+
 MU_TEST_SUITE(encryption_suite) {
     MU_RUN_TEST(encrypt_6);
     MU_RUN_TEST(encrypt_7);

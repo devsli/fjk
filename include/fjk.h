@@ -5,14 +5,12 @@
 #define CHUNK_SZ 3
 #define BUFF_SZ 64
 
-#define SET_IO(var, fname, fmode) do { \
-    if (strlen(fname)) { \
-        if ((var = fopen(fname, fmode)) == NULL) { \
-            perror("Unable to open " #var " file"); \
-            exit(errno); \
-        } \
-    } \
-} while (0)
+#define SET_IO(var, fname, fmode) if (strlen(fname)) {  \
+    if ((var = fopen(fname, fmode)) == NULL) {          \
+        perror("Unable to open " #var " file");         \
+        exit(errno);                                    \
+    }                                                   \
+}
 
 struct tail {
 	unsigned int size;
