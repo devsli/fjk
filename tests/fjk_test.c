@@ -30,8 +30,8 @@ MU_TEST_SUITE(decryption_suite) {
 }
 
 int main(void) {
-	MU_RUN_SUITE(encryption_suite);
-	MU_RUN_SUITE(decryption_suite);
-	MU_REPORT();
-	return 0;
+    MU_RUN_SUITE(encryption_suite);
+    MU_RUN_SUITE(decryption_suite);
+    MU_REPORT();
+    return 0;
 }
