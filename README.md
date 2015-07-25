@@ -31,7 +31,7 @@ print fjk.encrypt('Hello, world!')
 print fjk.decrypt('!ooHr,el ldwl')
 ```
 
-Contribution
+Contributing
 ============
 
 1. fork
