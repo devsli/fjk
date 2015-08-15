@@ -2,7 +2,7 @@ LIBSRC=decrypt.c encrypt.c
 SOURCES=$(LIBSRC) fjk.c
 HEADERS=include/*.h
 OBJECTS=$(SOURCES:.c=.o)
-CC=gcc
+CC?=gcc
 CFLAGS=-Wall -Wextra -O2 -fPIC
 EXECUTABLE=fjk
 
