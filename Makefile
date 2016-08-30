@@ -26,5 +26,5 @@ clean:
 
 test:
 	if [ -x ./tester ]; then rm tester; fi
-	$(CC) $(CFLAGS) -o tester tests/fjk_test.c $(LIBSRC)
+	$(CC) $(CFLAGS) $(TESTFLAGS) -o tester tests/fjk_test.c $(LIBSRC)
 	./tester
